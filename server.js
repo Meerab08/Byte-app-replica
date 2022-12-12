@@ -14,3 +14,21 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`);
 });
+
+// **************************************
+const mongoose = require("mongoose");
+const DB = require("./config/keys").url;
+
+const connectToDb = async () => {
+  await mongoose.connect(
+    DB,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    () => {
+      console.log("DB connected");
+    }
+  );
+};
+connectToDb();
